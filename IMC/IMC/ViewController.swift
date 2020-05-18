@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController
+{
 
     @IBOutlet weak var tfWeight: UITextField!
     @IBOutlet weak var tfHeight: UITextField!
@@ -18,10 +19,17 @@ class ViewController: UIViewController {
     
     var imc: Double = 0
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        view.endEditing(true)
+    }
+    
     @IBAction func calculate(_ sender: Any)
     {
         if let weight = Double(tfWeight.text!), let height = Double(tfHeight.text!)
@@ -30,6 +38,7 @@ class ViewController: UIViewController {
             showResult()
         }
     }
+    
     func showResult()
     {
         var result: String = ""
@@ -57,6 +66,7 @@ class ViewController: UIViewController {
         lbResult.text = result
         ivResult.image = UIImage(named: image)
         viResult.isHidden = false
+        view.endEditing(true)
     }
 }
 
